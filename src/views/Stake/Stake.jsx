@@ -25,7 +25,6 @@ import "./stake.scss";
 import { useWeb3Context } from "src/hooks/web3Context";
 import { isPendingTxn, txnButtonText } from "src/slices/PendingTxnsSlice";
 import { Skeleton } from "@material-ui/lab";
-import ExternalStakePool from "./ExternalStakePool";
 import { error } from "../../slices/MessagesSlice";
 import { ethers } from "ethers";
 
@@ -224,7 +223,7 @@ function Stake() {
                         Current Index
                       </Typography>
                       <Typography variant="h4">
-                        {currentIndex ? <>{trim(currentIndex, 1)} OHM</> : <Skeleton width="150px" />}
+                        {currentIndex ? <>{trim(currentIndex, 1)} OMIC</> : <Skeleton width="150px" />}
                       </Typography>
                     </div>
                   </Grid>
@@ -238,7 +237,7 @@ function Stake() {
                   <div className="wallet-menu" id="wallet-menu">
                     {modalButton}
                   </div>
-                  <Typography variant="h6">Connect your wallet to stake OHM</Typography>
+                  <Typography variant="h6">Connect your wallet to stake OMIC</Typography>
                 </div>
               ) : (
                 <>
@@ -264,15 +263,15 @@ function Stake() {
                             <Typography variant="body1" className="stake-note" color="textSecondary">
                               {view === 0 ? (
                                 <>
-                                  First time staking <b>OHM</b>?
+                                  First time staking <b>OMIC</b>?
                                   <br />
-                                  Please approve Olympus Dao to use your <b>OHM</b> for staking.
+                                  Please approve Omicron Dao to use your <b>OMIC</b> for staking.
                                 </>
                               ) : (
                                 <>
-                                  First time unstaking <b>sOHM</b>?
+                                  First time unstaking <b>sOMIC</b>?
                                   <br />
-                                  Please approve Olympus Dao to use your <b>sOHM</b> for unstaking.
+                                  Please approve Omicron Dao to use your <b>sOMIC</b> for unstaking.
                                 </>
                               )}
                             </Typography>
@@ -315,7 +314,7 @@ function Stake() {
                               onChangeStake("stake");
                             }}
                           >
-                            {txnButtonText(pendingTransactions, "staking", "Stake OHM")}
+                            {txnButtonText(pendingTransactions, "staking", "Stake OMIC")}
                           </Button>
                         ) : (
                           <Button
@@ -344,7 +343,7 @@ function Stake() {
                               onChangeStake("unstake");
                             }}
                           >
-                            {txnButtonText(pendingTransactions, "unstaking", "Unstake OHM")}
+                            {txnButtonText(pendingTransactions, "unstaking", "Unstake OMIC")}
                           </Button>
                         ) : (
                           <Button
@@ -367,21 +366,21 @@ function Stake() {
                     <div className="data-row">
                       <Typography variant="body1">Your Balance</Typography>
                       <Typography variant="body1">
-                        {isAppLoading ? <Skeleton width="80px" /> : <>{trim(ohmBalance, 4)} OHM</>}
+                        {isAppLoading ? <Skeleton width="80px" /> : <>{trim(ohmBalance, 4)} OMIC</>}
                       </Typography>
                     </div>
 
                     <div className="data-row">
                       <Typography variant="body1">Your Staked Balance</Typography>
                       <Typography variant="body1">
-                        {isAppLoading ? <Skeleton width="80px" /> : <>{trimmedBalance} sOHM</>}
+                        {isAppLoading ? <Skeleton width="80px" /> : <>{trimmedBalance} sOMIC</>}
                       </Typography>
                     </div>
 
                     <div className="data-row">
                       <Typography variant="body1">Next Reward Amount</Typography>
                       <Typography variant="body1">
-                        {isAppLoading ? <Skeleton width="80px" /> : <>{nextRewardValue} sOHM</>}
+                        {isAppLoading ? <Skeleton width="80px" /> : <>{nextRewardValue} sOMIC</>}
                       </Typography>
                     </div>
 
@@ -405,8 +404,6 @@ function Stake() {
           </Grid>
         </Paper>
       </Zoom>
-
-      <ExternalStakePool />
     </div>
   );
 }

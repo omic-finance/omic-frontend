@@ -10,7 +10,7 @@ import { ReactComponent as ohmTokenImg } from "../../assets/tokens/token_OHM.svg
 import { ReactComponent as t33TokenImg } from "../../assets/tokens/token_33T.svg";
 
 import "./ohmmenu.scss";
-import { dai, frax } from "src/helpers/AllBonds";
+import { dai } from "src/helpers/AllBonds";
 import { useWeb3Context } from "../../hooks/web3Context";
 
 import OhmImg from "src/assets/tokens/token_OHM.svg";
@@ -65,7 +65,6 @@ function OhmMenu() {
 
   const SOHM_ADDRESS = addresses[networkID].SOHM_ADDRESS;
   const OHM_ADDRESS = addresses[networkID].OHM_ADDRESS;
-  const PT_TOKEN_ADDRESS = addresses[networkID].PT_TOKEN_ADDRESS;
 
   const handleClick = event => {
     setAnchorEl(anchorEl ? null : event.currentTarget);
@@ -74,7 +73,6 @@ function OhmMenu() {
   const open = Boolean(anchorEl);
   const id = "ohm-popper";
   const daiAddress = dai.getAddressForReserve(networkID);
-  const fraxAddress = frax.getAddressForReserve(networkID);
   return (
     <Box
       component="div"
@@ -84,7 +82,7 @@ function OhmMenu() {
     >
       <Button id="ohm-menu-button" size="large" variant="contained" color="secondary" title="OHM" aria-describedby={id}>
         <SvgIcon component={InfoIcon} color="primary" />
-        <Typography>OHM</Typography>
+        <Typography>OMIC</Typography>
       </Button>
 
       <Popper id={id} open={open} anchorEl={anchorEl} placement="bottom-start" transition>
@@ -104,37 +102,6 @@ function OhmMenu() {
                       </Typography>
                     </Button>
                   </Link>
-
-                  <Link
-                    href={`https://app.uniswap.org/#/swap?inputCurrency=${fraxAddress}&outputCurrency=${OHM_ADDRESS}`}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    <Button size="large" variant="contained" color="secondary" fullWidth>
-                      <Typography align="left">
-                        Buy on Uniswap <SvgIcon component={ArrowUpIcon} htmlColor="#A3A3A3" />
-                      </Typography>
-                    </Button>
-                  </Link>
-
-                  <Link href={`https://abracadabra.money/pool/10`} target="_blank" rel="noreferrer">
-                    <Button size="large" variant="contained" color="secondary" fullWidth>
-                      <Typography align="left">
-                        Wrap sOHM on Abracadabra <SvgIcon component={ArrowUpIcon} htmlColor="#A3A3A3" />
-                      </Typography>
-                    </Button>
-                  </Link>
-                </Box>
-
-                <Box component="div" className="data-links">
-                  <Divider color="secondary" className="less-margin" />
-                  <Link href={`https://dune.xyz/shadow/Olympus-(OHM)`} target="_blank" rel="noreferrer">
-                    <Button size="large" variant="contained" color="secondary" fullWidth>
-                      <Typography align="left">
-                        Shadow's Dune Dashboard <SvgIcon component={ArrowUpIcon} htmlColor="#A3A3A3" />
-                      </Typography>
-                    </Button>
-                  </Link>
                 </Box>
 
                 {isEthereumAPIAvailable ? (
@@ -142,44 +109,25 @@ function OhmMenu() {
                     <Divider color="secondary" />
                     <p>ADD TOKEN TO WALLET</p>
                     <Box display="flex" flexDirection="row" justifyContent="space-between">
-                      <Button variant="contained" color="secondary" onClick={addTokenToWallet("OHM", OHM_ADDRESS)}>
+                      <Button variant="contained" color="secondary" onClick={addTokenToWallet("OMIC", OHM_ADDRESS)}>
                         <SvgIcon
                           component={ohmTokenImg}
                           viewBox="0 0 32 32"
                           style={{ height: "25px", width: "25px" }}
                         />
-                        <Typography variant="body1">OHM</Typography>
+                        <Typography variant="body1">OMIC</Typography>
                       </Button>
-                      <Button variant="contained" color="secondary" onClick={addTokenToWallet("sOHM", SOHM_ADDRESS)}>
+                      <Button variant="contained" color="secondary" onClick={addTokenToWallet("sOMIC", SOHM_ADDRESS)}>
                         <SvgIcon
                           component={sOhmTokenImg}
                           viewBox="0 0 100 100"
                           style={{ height: "25px", width: "25px" }}
                         />
-                        <Typography variant="body1">sOHM</Typography>
-                      </Button>
-                      <Button variant="contained" color="secondary" onClick={addTokenToWallet("33T", PT_TOKEN_ADDRESS)}>
-                        <SvgIcon
-                          component={t33TokenImg}
-                          viewBox="0 0 1000 1000"
-                          style={{ height: "25px", width: "25px" }}
-                        />
-                        <Typography variant="body1">33T</Typography>
+                        <Typography variant="body1">sOMIC</Typography>
                       </Button>
                     </Box>
                   </Box>
                 ) : null}
-
-                <Divider color="secondary" />
-                <Link
-                  href="https://docs.olympusdao.finance/using-the-website/unstaking_lp"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <Button size="large" variant="contained" color="secondary" fullWidth>
-                    <Typography align="left">Unstake Legacy LP Token</Typography>
-                  </Button>
-                </Link>
               </Paper>
             </Fade>
           );
