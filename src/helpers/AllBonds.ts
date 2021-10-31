@@ -2,7 +2,7 @@ import { StableBond, LPBond, NetworkID, CustomBond, BondType } from "src/lib/Bon
 import { addresses } from "src/constants";
 
 import { ReactComponent as DaiImg } from "src/assets/tokens/DAI.svg";
-import { ReactComponent as OhmDaiImg } from "src/assets/tokens/OHM-DAI.svg";
+import { ReactComponent as OhmDaiImg } from "src/assets/tokens/OMIC-DAI.svg";
 import { ReactComponent as FraxImg } from "src/assets/tokens/FRAX.svg";
 import { ReactComponent as OhmFraxImg } from "src/assets/tokens/OHM-FRAX.svg";
 import { ReactComponent as OhmLusdImg } from "src/assets/tokens/OHM-LUSD.svg";
@@ -50,7 +50,7 @@ export const dai = new StableBond({
 });
 
 export const ohm_dai = new LPBond({
-  name: "ohm_dai_lp",
+  name: "omic_dai_lp",
   displayName: "OMIC-DAI LP",
   bondToken: "DAI",
   isAvailable: { [NetworkID.Mainnet]: true, [NetworkID.Testnet]: true },

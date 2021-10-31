@@ -1,4 +1,4 @@
-import OlympusLogo from "../../assets/Olympus Logo.svg";
+import OlympusLogo from "../../assets/Omicron Logo.svg";
 import "./notfound.scss";
 
 export default function NotFound() {
