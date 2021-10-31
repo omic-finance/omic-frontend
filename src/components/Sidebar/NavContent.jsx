@@ -39,12 +39,12 @@ function NavContent() {
       <Box className="dapp-sidebar-inner" display="flex" justifyContent="space-between" flexDirection="column">
         <div className="dapp-menu-top">
           <Box className="branding-header">
-            <Link href="https://olympusdao.finance" target="_blank">
+            <Link href="https://omic.finance" target="_blank">
               <SvgIcon
                 color="primary"
                 component={OlympusIcon}
-                viewBox="0 0 1600 1540"
-                style={{ minWidth: "160px", minHeight: "154px", width: "160px" }}
+                viewBox="0 0 140 154"
+                style={{ minWidth: "140px", minHeight: "154px", width: "140px" }}
               />
             </Link>
 
