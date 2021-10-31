@@ -46,7 +46,7 @@ function ChooseBond() {
   });
 
   const treasuryBalance = useSelector(state => {
-    if (state.bonding.loading == false) {
+    if (state.bonding.loading === false) {
       let tokenBalances = 0;
       for (const bond in allBondsMap) {
         if (state.bonding[bond]) {

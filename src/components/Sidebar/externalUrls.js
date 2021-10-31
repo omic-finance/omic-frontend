@@ -7,7 +7,7 @@ import { SvgIcon } from "@material-ui/core";
 const externalUrls = [
   {
     title: "Docs",
-    url: "https://docs.omicron.finance/",
+    url: "https://docs.omic.finance/",
     icon: <SvgIcon color="primary" component={DocsIcon} />,
   },
 ];

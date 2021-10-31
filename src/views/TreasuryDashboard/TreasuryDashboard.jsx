@@ -8,6 +8,7 @@ import { useTheme } from "@material-ui/core/styles";
 import "./treasury-dashboard.scss";
 import apollo from "../../lib/apolloClient";
 import InfoTooltip from "src/components/InfoTooltip/InfoTooltip.jsx";
+import { allBondsMap } from "../../helpers/AllBonds";
 
 function TreasuryDashboard() {
   const [data, setData] = useState(null);
@@ -41,6 +42,18 @@ function TreasuryDashboard() {
 
   const wsOhmPrice = useSelector(state => {
     return state.app.marketPrice * state.app.currentIndex;
+  });
+
+  const treasuryBalance = useSelector(state => {
+    if (state.bonding.loading === false) {
+      let tokenBalances = 0;
+      for (const bond in allBondsMap) {
+        if (state.bonding[bond]) {
+          tokenBalances += state.bonding[bond].purchased;
+        }
+      }
+      return tokenBalances;
+    }
   });
 
   useEffect(() => {
@@ -97,7 +110,7 @@ function TreasuryDashboard() {
 
               <Box className="metric price">
                 <Typography variant="h6" color="textSecondary">
-                  OHM Price
+                  OMIC Price
                 </Typography>
                 <Typography variant="h5">
                   {/* appleseed-fix */}
@@ -107,10 +120,10 @@ function TreasuryDashboard() {
 
               <Box className="metric wsoprice">
                 <Typography variant="h6" color="textSecondary">
-                  wsOHM Price
+                  wsOMIC Price
                   <InfoTooltip
                     message={
-                      "wsOHM = sOHM * index\n\nThe price of wsOHM is equal to the price of OHM multiplied by the current index"
+                      "wsOMIC = sOMIC * index\n\nThe price of wsOMIC is equal to the price of OHM multiplied by the current index"
                     }
                   />
                 </Typography>
@@ -135,10 +148,19 @@ function TreasuryDashboard() {
 
               <Box className="metric bpo">
                 <Typography variant="h6" color="textSecondary">
-                  Backing per OHM
+                  Backing per OMIC
                 </Typography>
                 <Typography variant="h5">
-                  {backingPerOhm ? formatCurrency(backingPerOhm, 2) : <Skeleton type="text" />}
+                  {treasuryBalance && circSupply ? (
+                    new Intl.NumberFormat("en-US", {
+                      style: "currency",
+                      currency: "USD",
+                      maximumFractionDigits: 2,
+                      minimumFractionDigits: 0,
+                    }).format(treasuryBalance / circSupply)
+                  ) : (
+                    <Skeleton type="text" />
+                  )}
                 </Typography>
               </Box>
 
@@ -147,12 +169,12 @@ function TreasuryDashboard() {
                   Current Index
                   <InfoTooltip
                     message={
-                      "The current index tracks the amount of sOHM accumulated since the beginning of staking. Basically, how much sOHM one would have if they staked and held a single OHM from day 1."
+                      "The current index tracks the amount of sOMIC accumulated since the beginning of staking. Basically, how much sOMIC one would have if they staked and held a single OMIC from day 1."
                     }
                   />
                 </Typography>
                 <Typography variant="h5">
-                  {currentIndex ? trim(currentIndex, 2) + " sOHM" : <Skeleton type="text" />}
+                  {currentIndex ? trim(currentIndex, 2) + " sOMIC" : <Skeleton type="text" />}
                 </Typography>
               </Box>
             </Box>

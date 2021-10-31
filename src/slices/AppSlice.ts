@@ -47,11 +47,10 @@ export const loadAppDetails = createAsyncThunk(
     );
     const sohmMainContract = new ethers.Contract(addresses[networkID].SOHM_ADDRESS as string, sOHMv2, provider);
 
-    const circSupply = await circulatingSupplyContract.OmicronCirculatingSupply();
-    console.log(circSupply);
-    const totalSupply = await ohmContract.totalSupply();
+    const circSupply = (await circulatingSupplyContract.OmicronCirculatingSupply()) / Math.pow(10, 9);
+    const totalSupply = (await ohmContract.totalSupply()) / Math.pow(10, 9);
     const marketCap = Math.floor(marketPrice * circSupply);
-    const stakingContractBalance = await stakingContract.contractBalance();
+    const stakingContractBalance = (await stakingContract.contractBalance()) / Math.pow(10, 9);
     const stakingTVL = stakingContractBalance * marketPrice;
 
     // Calculating staking
