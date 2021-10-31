@@ -26,11 +26,8 @@ const addTokenToWallet = (tokenSymbol, tokenAddress) => async () => {
 
     // } ? OhmImg : SOhmImg;
     switch (tokenSymbol) {
-      case "OHM":
+      case "OMIC":
         tokenPath = OhmImg;
-        break;
-      case "33T":
-        tokenPath = token33tImg;
         break;
       default:
         tokenPath = SOhmImg;
