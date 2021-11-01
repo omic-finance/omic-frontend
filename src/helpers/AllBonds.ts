@@ -1,8 +1,8 @@
 import { StableBond, LPBond, NetworkID, CustomBond, BondType } from "src/lib/Bond";
 import { addresses } from "src/constants";
 
-import { ReactComponent as DaiImg } from "src/assets/tokens/DAI.svg";
-import { ReactComponent as OhmDaiImg } from "src/assets/tokens/OMIC-DAI.svg";
+import { ReactComponent as DaiImg } from "src/assets/tokens/USDC.svg";
+import { ReactComponent as OhmDaiImg } from "src/assets/tokens/OMIC-USDC.svg";
 import { ReactComponent as FraxImg } from "src/assets/tokens/FRAX.svg";
 import { ReactComponent as OhmFraxImg } from "src/assets/tokens/OHM-FRAX.svg";
 import { ReactComponent as OhmLusdImg } from "src/assets/tokens/OHM-LUSD.svg";
@@ -31,9 +31,9 @@ import { getBondCalculator } from "src/helpers/BondCalculator";
 // TODO(zx): Further modularize by splitting up reserveAssets into vendor token definitions
 //   and include that in the definition of a bond
 export const dai = new StableBond({
-  name: "dai",
-  displayName: "DAI",
-  bondToken: "DAI",
+  name: "usdc",
+  displayName: "USDC",
+  bondToken: "USDC",
   isAvailable: { [NetworkID.Mainnet]: true, [NetworkID.Testnet]: true },
   bondIconSvg: DaiImg,
   bondContractABI: DaiBondContract,
@@ -50,9 +50,9 @@ export const dai = new StableBond({
 });
 
 export const ohm_dai = new LPBond({
-  name: "omic_dai_lp",
-  displayName: "OMIC-DAI LP",
-  bondToken: "DAI",
+  name: "omic_usdc_lp",
+  displayName: "OMIC-USDC LP",
+  bondToken: "USDC",
   isAvailable: { [NetworkID.Mainnet]: true, [NetworkID.Testnet]: true },
   bondIconSvg: OhmDaiImg,
   bondContractABI: BondOhmDaiContract,

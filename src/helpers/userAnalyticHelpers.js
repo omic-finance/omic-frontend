@@ -26,6 +26,7 @@ async function countryLookup() {
 
 // Pushing data to segment analytics
 export function segmentUA(data) {
+  return;
   const analytics = (window.analytics = window.analytics);
   countryLookup().then(country => (data.country = country));
 
