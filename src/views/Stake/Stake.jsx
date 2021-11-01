@@ -144,7 +144,76 @@ function Stake() {
       .reduce((a, b) => a + b, 0)
       .toFixed(4),
   );
-  const trimmedStakingAPY = trim(stakingAPY * 100, 1);
+
+  function tickFormatter(value) {
+    const suffix = [
+      "",
+      "Million",
+      "Billion",
+      "Trillion",
+      "Quadrillion",
+      "Quintrillion",
+      "Sextillion",
+      "Septillion",
+      "Octillion",
+      "Nonillion",
+      "Decillion",
+      "Undecillion",
+      "Duodecillion",
+      "Tredecillion",
+      "Quattuordecillion",
+      "Quindecillion",
+      "Hexdecillion",
+      "Septendecillion",
+      "Octodecillion",
+      "Novemdecillion",
+      "Vigintillion",
+    ];
+
+    if (value > Math.pow(1000, 20)) {
+      return `${(value / Math.pow(1000, 20)).toFixed(2)} ${suffix[19]}`;
+    } else if (value > Math.pow(1000, 19)) {
+      return `${(value / Math.pow(1000, 19)).toFixed(2)} ${suffix[18]}`;
+    } else if (value > Math.pow(1000, 18)) {
+      return `${(value / Math.pow(1000, 18)).toFixed(2)} ${suffix[17]}`;
+    } else if (value > Math.pow(1000, 17)) {
+      return `${(value / Math.pow(1000, 17)).toFixed(2)} ${suffix[16]}`;
+    } else if (value > Math.pow(1000, 16)) {
+      return `${(value / Math.pow(1000, 16)).toFixed(2)} ${suffix[15]}`;
+    } else if (value > Math.pow(1000, 15)) {
+      return `${(value / Math.pow(1000, 15)).toFixed(2)} ${suffix[14]}`;
+    } else if (value > Math.pow(1000, 14)) {
+      return `${(value / Math.pow(1000, 14)).toFixed(2)} ${suffix[13]}`;
+    } else if (value > Math.pow(1000, 13)) {
+      return `${(value / Math.pow(1000, 13)).toFixed(2)} ${suffix[12]}`;
+    } else if (value > Math.pow(1000, 12)) {
+      return `${(value / Math.pow(1000, 12)).toFixed(2)} ${suffix[11]}`;
+    } else if (value > Math.pow(1000, 11)) {
+      return `${(value / Math.pow(1000, 11)).toFixed(2)} ${suffix[10]}`;
+    } else if (value > Math.pow(1000, 10)) {
+      return `${(value / Math.pow(1000, 10)).toFixed(2)} ${suffix[9]}`;
+    } else if (value > Math.pow(1000, 9)) {
+      return `${(value / Math.pow(1000, 9)).toFixed(2)} ${suffix[8]}`;
+    } else if (value > Math.pow(1000, 8)) {
+      return `${(value / Math.pow(1000, 8)).toFixed(2)} ${suffix[7]}`;
+    } else if (value > Math.pow(1000, 7)) {
+      return `${(value / Math.pow(1000, 7)).toFixed(2)} ${suffix[6]}`;
+    } else if (value > Math.pow(1000, 6)) {
+      return `${(value / Math.pow(1000, 6)).toFixed(2)} ${suffix[5]}`;
+    } else if (value > Math.pow(1000, 5)) {
+      return `${(value / Math.pow(1000, 5)).toFixed(2)} ${suffix[4]}`;
+    } else if (value > Math.pow(1000, 4)) {
+      return `${(value / Math.pow(1000, 4)).toFixed(2)} ${suffix[3]}`;
+    } else if (value > Math.pow(1000, 3)) {
+      return `${(value / Math.pow(1000, 3)).toFixed(2)} ${suffix[2]}`;
+    } else if (value > Math.pow(1000, 2)) {
+      return `${(value / Math.pow(1000, 2)).toFixed(2)} ${suffix[1]}`;
+    } else {
+      return `${value.toFixed(2)} ${suffix[0]}`;
+    }
+  }
+
+  const trimmedStakingAPY = tickFormatter(stakingAPY * 100);
   const stakingRebasePercentage = trim(stakingRebase * 100, 4);
   const nextRewardValue = trim((stakingRebasePercentage / 100) * trimmedBalance, 4);
 
@@ -179,14 +248,10 @@ function Stake() {
                   <Grid item xs={12} sm={4} md={4} lg={4}>
                     <div className="stake-apy">
                       <Typography variant="h5" color="textSecondary">
-                        APY
+                        APY %
                       </Typography>
                       <Typography variant="h4">
-                        {stakingAPY ? (
-                          <>{new Intl.NumberFormat("en-US").format(trimmedStakingAPY)}%</>
-                        ) : (
-                          <Skeleton width="150px" />
-                        )}
+                        {stakingAPY ? <>{trimmedStakingAPY}</> : <Skeleton width="150px" />}
                       </Typography>
                     </div>
                   </Grid>

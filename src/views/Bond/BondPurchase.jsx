@@ -137,7 +137,7 @@ function BondPurchase({ bond, slippage, recipientAddress }) {
               <div className="help-text">
                 <em>
                   <Typography variant="body1" align="center" color="textSecondary">
-                    First time bonding <b>{bond.displayName}</b>? <br /> Please approve Olympus Dao to use your{" "}
+                    First time bonding <b>{bond.displayName}</b>? <br /> Please approve Omicron Dao to use your{" "}
                     <b>{bond.displayName}</b> for bonding.
                   </Typography>
                 </em>
@@ -212,14 +212,14 @@ function BondPurchase({ bond, slippage, recipientAddress }) {
           <div className={`data-row`}>
             <Typography>You Will Get</Typography>
             <Typography id="bond-value-id" className="price-data">
-              {isBondLoading ? <Skeleton width="100px" /> : `${trim(bond.bondQuote, 4) || "0"} OHM`}
+              {isBondLoading ? <Skeleton width="100px" /> : `${trim(bond.bondQuote, 4) || "0"} OMIC`}
             </Typography>
           </div>
 
           <div className={`data-row`}>
             <Typography>Max You Can Buy</Typography>
             <Typography id="bond-value-id" className="price-data">
-              {isBondLoading ? <Skeleton width="100px" /> : `${trim(bond.maxBondPrice, 4) || "0"} OHM`}
+              {isBondLoading ? <Skeleton width="100px" /> : `${trim(bond.maxBondPrice, 4) || "0"} OMIC`}
             </Typography>
           </div>
 

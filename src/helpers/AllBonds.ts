@@ -43,7 +43,7 @@ export const dai = new StableBond({
       reserveAddress: "0x6b175474e89094c44da98b954eedeac495271d0f",
     },
     [NetworkID.Testnet]: {
-      bondAddress: "0xacd6fbe67ACFc35F99f04528282De02D2A09a279",
+      bondAddress: "0x4135fA59CAFc39B993BA7864dA0E176770076a4c",
       reserveAddress: "0x5926BD178D8075635Fa2Ff99492339f406cbf1e7",
     },
   },
@@ -63,12 +63,12 @@ export const ohm_dai = new LPBond({
       reserveAddress: "0x34d7d7Aaf50AD4944B70B320aCB24C95fa2def7c",
     },
     [NetworkID.Testnet]: {
-      bondAddress: "0x967FCdc2f3e21634D0D06c7F67aa2536403BeBEC",
-      reserveAddress: "0x5f2f55bb6452f48741edaa28e9d6f9f310f2aed3",
+      bondAddress: "0xAd171c1DBbfaCd2687832Cd161A84a8D0ef6F26a",
+      reserveAddress: "0x09cd28ff21125cebbea9fb66eb0befd7a050edb1",
     },
   },
   lpUrl:
-    "https://app.sushi.com/add/0x383518188c0c6d7730d91b2c03a03c837814a899/0x6b175474e89094c44da98b954eedeac495271d0f",
+    "https://app.sushi.com/add/0xB910E3d46D9cA239596cBB02A69Afa532A2d9059/0x5926BD178D8075635Fa2Ff99492339f406cbf1e7",
 });
 
 // HOW TO ADD A NEW BOND:

@@ -95,7 +95,18 @@ function OhmMenu() {
                   >
                     <Button size="large" variant="contained" color="secondary" fullWidth>
                       <Typography align="left">
-                        Buy on Sushiswap <SvgIcon component={ArrowUpIcon} htmlColor="#A3A3A3" />
+                        Buy OMIC on Sushiswap <SvgIcon component={ArrowUpIcon} htmlColor="#A3A3A3" />
+                      </Typography>
+                    </Button>
+                  </Link>
+                  <Link
+                    href={`https://app.uniswap.org/#/swap?outputCurrency=${daiAddress}`}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <Button size="large" variant="contained" color="secondary" fullWidth>
+                      <Typography align="left">
+                        Buy USDC on Uniswap <SvgIcon component={ArrowUpIcon} htmlColor="#A3A3A3" />
                       </Typography>
                     </Button>
                   </Link>
