@@ -89,11 +89,11 @@ function BondPurchase({ bond, slippage, recipientAddress }) {
 
   const setMax = () => {
     let maxQ;
-    if (bond.maxBondPrice * bond.bondPrice < Number(bond.balance)) {
+    if (bond.maxBondPrice * bond.bondPrice < Number(bond.balance * Math.pow(10, 12))) {
       // there is precision loss here on Number(bond.balance)
       maxQ = bond.maxBondPrice * bond.bondPrice.toString();
     } else {
-      maxQ = bond.balance;
+      maxQ = bond.balance * Math.pow(10, 12);
     }
     setQuantity(maxQ);
   };
@@ -203,7 +203,7 @@ function BondPurchase({ bond, slippage, recipientAddress }) {
                 <Skeleton width="100px" />
               ) : (
                 <>
-                  {trim(bond.balance, 4)} {displayUnits}
+                  {trim(bond.balance * Math.pow(10, 12), 2)} {displayUnits}
                 </>
               )}
             </Typography>

@@ -106,7 +106,6 @@ function Bond({ bond }) {
 }
 
 export function DisplayBondPrice({ bond }) {
-  console.log(bond.bondPrice);
   const { chainID } = useWeb3Context();
   return (
     <>
