@@ -77,7 +77,7 @@ export const Web3ContextProvider: React.FC<{ children: ReactElement }> = ({ chil
   const [connected, setConnected] = useState(false);
   // NOTE (appleseed): if you are testing on rinkeby you need to set chainId === 4 as the default for non-connected wallet testing...
   // ... you also need to set getTestnetURI() as the default uri state below
-  const [chainID, setChainID] = useState(3);
+  const [chainID, setChainID] = useState(42161);
   const [address, setAddress] = useState("");
 
   const [uri, setUri] = useState(getMainnetURI());
@@ -94,6 +94,7 @@ export const Web3ContextProvider: React.FC<{ children: ReactElement }> = ({ chil
             rpc: {
               1: getMainnetURI(),
               3: getMainnetURI(),
+              42161: getMainnetURI(),
               4: getTestnetURI(),
             },
           },
@@ -139,9 +140,9 @@ export const Web3ContextProvider: React.FC<{ children: ReactElement }> = ({ chil
   const _checkNetwork = (otherChainID: number): Boolean => {
     if (chainID !== otherChainID) {
       console.warn("You are switching networks");
-      if (otherChainID === 1 || otherChainID === 3 || otherChainID === 4) {
+      if (otherChainID === 1 || otherChainID === 3 || otherChainID === 42161 || otherChainID === 4) {
         setChainID(otherChainID);
-        otherChainID === 1 ? setUri(getMainnetURI()) : setUri(getTestnetURI());
+        otherChainID === 1 || otherChainID === 42161 ? setUri(getMainnetURI()) : setUri(getTestnetURI());
         return true;
       }
       return false;

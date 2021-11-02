@@ -39,8 +39,8 @@ export const dai = new StableBond({
   bondContractABI: DaiBondContract,
   networkAddrs: {
     [NetworkID.Mainnet]: {
-      bondAddress: "0x575409F8d77c12B05feD8B455815f0e54797381c",
-      reserveAddress: "0x6b175474e89094c44da98b954eedeac495271d0f",
+      bondAddress: "0x6185f3d36b3d0ed280094b3732542a1662dbfe97",
+      reserveAddress: "0xFF970A61A04b1cA14834A43f5dE4533eBDDB5CC8",
     },
     [NetworkID.Testnet]: {
       bondAddress: "0x4135fA59CAFc39B993BA7864dA0E176770076a4c",
@@ -75,7 +75,7 @@ export const ohm_dai = new LPBond({
 // Is it a stableCoin bond? use `new StableBond`
 // Is it an LP Bond? use `new LPBond`
 // Add new bonds to this array!!
-export const allBonds = [dai, ohm_dai];
+export const allBonds = [dai];
 export const allBondsMap = allBonds.reduce((prevVal, bond) => {
   return { ...prevVal, [bond.name]: bond };
 }, {});

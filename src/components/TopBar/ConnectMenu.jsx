@@ -42,7 +42,7 @@ function ConnectMenu({ theme }) {
   const getEtherscanUrl = txnHash => {
     return chainID === 3 || chainID === 4
       ? "https://rinkeby.etherscan.io/tx/" + txnHash
-      : "https://etherscan.io/tx/" + txnHash;
+      : "https://arbiscan.io/tx/" + txnHash;
   };
 
   useEffect(() => {
