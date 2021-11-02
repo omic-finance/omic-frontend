@@ -73,7 +73,7 @@ function ClaimBonds({ activeBonds }) {
                         <TableCell align="center">Bond</TableCell>
                         <TableCell align="center">Claimable</TableCell>
                         <TableCell align="center">Pending</TableCell>
-                        <TableCell align="right">Fully Vested</TableCell>
+                        {/*<TableCell align="right">Fully Vested</TableCell>*/}
                         <TableCell align="right"></TableCell>
                       </TableRow>
                     </TableHead>

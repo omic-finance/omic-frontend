@@ -33,6 +33,8 @@ export const loadAppDetails = createAsyncThunk(
 
     const treasuryMarketValue = 0;
     const currentBlock = await provider.getBlockNumber();
+    console.log('Current block');
+    console.log(currentBlock);
 
     const ohmContract = new ethers.Contract(addresses[networkID].OHM_ADDRESS as string, OHM, provider);
     const circulatingSupplyContract = new ethers.Contract(
@@ -142,7 +144,7 @@ const loadMarketPrice = createAsyncThunk("app/loadMarketPrice", async ({ network
   let marketPrice: number;
   try {
     marketPrice = await getMarketPrice({ networkID, provider });
-    marketPrice = marketPrice / Math.pow(10, 9);
+    marketPrice = marketPrice * Math.pow(10, 3); // Was power 9 for DAI
   } catch (e) {
     marketPrice = await getTokenPrice("olympus");
   }

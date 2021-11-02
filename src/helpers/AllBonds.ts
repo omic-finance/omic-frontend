@@ -43,8 +43,8 @@ export const dai = new StableBond({
       reserveAddress: "0xFF970A61A04b1cA14834A43f5dE4533eBDDB5CC8",
     },
     [NetworkID.Testnet]: {
-      bondAddress: "0x4135fA59CAFc39B993BA7864dA0E176770076a4c",
-      reserveAddress: "0x5926BD178D8075635Fa2Ff99492339f406cbf1e7",
+      bondAddress: "0x6185f3d36b3d0ed280094b3732542a1662dbfe97",
+      reserveAddress: "0xFF970A61A04b1cA14834A43f5dE4533eBDDB5CC8",
     },
   },
 });
@@ -59,16 +59,16 @@ export const ohm_dai = new LPBond({
   reserveContract: ReserveOhmDaiContract,
   networkAddrs: {
     [NetworkID.Mainnet]: {
-      bondAddress: "0x956c43998316b6a2F21f89a1539f73fB5B78c151",
-      reserveAddress: "0x34d7d7Aaf50AD4944B70B320aCB24C95fa2def7c",
+      bondAddress: "0xBE22F4c106C947655E23F7007b20E487cD6F5eC8",
+      reserveAddress: "0xe4ad045abb586dbdae6b11a4d2c6ff5434b93ed1",
     },
     [NetworkID.Testnet]: {
-      bondAddress: "0xAd171c1DBbfaCd2687832Cd161A84a8D0ef6F26a",
-      reserveAddress: "0x09cd28ff21125cebbea9fb66eb0befd7a050edb1",
+      bondAddress: "0xBE22F4c106C947655E23F7007b20E487cD6F5eC8",
+      reserveAddress: "0xe4ad045abb586dbdae6b11a4d2c6ff5434b93ed1",
     },
   },
   lpUrl:
-    "https://app.sushi.com/add/0xB910E3d46D9cA239596cBB02A69Afa532A2d9059/0x5926BD178D8075635Fa2Ff99492339f406cbf1e7",
+    "https://app.sushi.com/add/0x86b3353387F560295a8Fa7902679735E5f076Bd5/0xFF970A61A04b1cA14834A43f5dE4533eBDDB5CC8",
 });
 
 // HOW TO ADD A NEW BOND:
