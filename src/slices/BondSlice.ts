@@ -145,8 +145,6 @@ export const calcBondDetails = createAsyncThunk(
       dispatch(error(errorString));
     }
 
-    console.log(bond.decimals);
-
     // Calculate bonds purchased
     let purchased = (await bond.getTreasuryBalance(networkID, provider)) * Math.pow(10, 12);
     return {
