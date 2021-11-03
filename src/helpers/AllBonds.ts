@@ -34,6 +34,8 @@ export const dai = new StableBond({
   name: "usdc",
   displayName: "USDC",
   bondToken: "USDC",
+  decimals: 6,
+  fraction_pow: 12,
   isAvailable: { [NetworkID.Mainnet]: true, [NetworkID.Testnet]: true },
   bondIconSvg: DaiImg,
   bondContractABI: DaiBondContract,
@@ -53,17 +55,19 @@ export const ohm_dai = new LPBond({
   name: "omic_usdc_lp",
   displayName: "OMIC-USDC LP",
   bondToken: "USDC",
+  decimals: 9,
+  fraction_pow: 18,
   isAvailable: { [NetworkID.Mainnet]: true, [NetworkID.Testnet]: true },
   bondIconSvg: OhmDaiImg,
   bondContractABI: BondOhmDaiContract,
   reserveContract: ReserveOhmDaiContract,
   networkAddrs: {
     [NetworkID.Mainnet]: {
-      bondAddress: "0xBE22F4c106C947655E23F7007b20E487cD6F5eC8",
+      bondAddress: "0x073c1BF7b6cf1706b967899Df2c5055F03307CF7",
       reserveAddress: "0xe4ad045abb586dbdae6b11a4d2c6ff5434b93ed1",
     },
     [NetworkID.Testnet]: {
-      bondAddress: "0xBE22F4c106C947655E23F7007b20E487cD6F5eC8",
+      bondAddress: "0x073c1BF7b6cf1706b967899Df2c5055F03307CF7",
       reserveAddress: "0xe4ad045abb586dbdae6b11a4d2c6ff5434b93ed1",
     },
   },
@@ -75,7 +79,7 @@ export const ohm_dai = new LPBond({
 // Is it a stableCoin bond? use `new StableBond`
 // Is it an LP Bond? use `new LPBond`
 // Add new bonds to this array!!
-export const allBonds = [dai];
+export const allBonds = [dai, ohm_dai];
 export const allBondsMap = allBonds.reduce((prevVal, bond) => {
   return { ...prevVal, [bond.name]: bond };
 }, {});

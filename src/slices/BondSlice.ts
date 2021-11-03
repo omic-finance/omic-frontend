@@ -103,9 +103,9 @@ export const calcBondDetails = createAsyncThunk(
     }
 
     try {
-      bondPrice = await bondContract.bondPriceInUSD();
+      bondPrice = (await bondContract.bondPriceInUSD()) / Math.pow(10, bond.decimals);
       // bondDiscount = (marketPrice * Math.pow(10, 9) - bondPrice) / bondPrice; // 1 - bondPrice / (bondPrice * Math.pow(10, 9));
-      bondDiscount = (marketPrice * Math.pow(10, 6) - bondPrice) / bondPrice; // 1 - bondPrice / (bondPrice * Math.pow(10, 9));
+      bondDiscount = (marketPrice - bondPrice) / bondPrice; // 1 - bondPrice / (bondPrice * Math.pow(10, 9));
     } catch (e) {
       console.log("error getting bondPriceInUSD", e);
     }
@@ -145,9 +145,10 @@ export const calcBondDetails = createAsyncThunk(
       dispatch(error(errorString));
     }
 
+    console.log(bond.decimals);
+
     // Calculate bonds purchased
     let purchased = (await bond.getTreasuryBalance(networkID, provider)) * Math.pow(10, 12);
-    console.log(terms.vestingTerm);
     return {
       bond: bond.name,
       bondDiscount,
@@ -156,7 +157,7 @@ export const calcBondDetails = createAsyncThunk(
       purchased,
       vestingTerm: Number(terms.vestingTerm),
       maxBondPrice: maxBondPrice / Math.pow(10, 9),
-      bondPrice: bondPrice / Math.pow(10, 6),
+      bondPrice: bondPrice,
       marketPrice: marketPrice,
     };
   },

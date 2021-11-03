@@ -33,12 +33,14 @@ export interface Available {
 
 interface BondOpts {
   name: string; // Internal name used for references
-  displayName: string; // Displayname on UI
+  displayName: string; // Display name on UI
   isAvailable: Available; // set false to hide
   bondIconSvg: React.ReactNode; //  SVG path for icons
   bondContractABI: ethers.ContractInterface; // ABI for contract
   networkAddrs: NetworkAddresses; // Mapping of network --> Addresses
   bondToken: string; // Unused, but native token to buy the bond.
+  decimals: number; // Number of decimal places.
+  fraction_pow: number; // To what power the value fractions should be raised
 }
 
 // Technically only exporting for the interface
@@ -52,6 +54,8 @@ export abstract class Bond {
   readonly bondContractABI: ethers.ContractInterface; // Bond ABI
   readonly networkAddrs: NetworkAddresses;
   readonly bondToken: string;
+  readonly decimals: number;
+  readonly fraction_pow: number;
 
   // The following two fields will differ on how they are set depending on bond type
   abstract isLP: Boolean;
@@ -70,6 +74,8 @@ export abstract class Bond {
     this.bondContractABI = bondOpts.bondContractABI;
     this.networkAddrs = bondOpts.networkAddrs;
     this.bondToken = bondOpts.bondToken;
+    this.decimals = bondOpts.decimals;
+    this.fraction_pow = bondOpts.fraction_pow;
   }
 
   getAddressForBond(networkID: NetworkID) {
