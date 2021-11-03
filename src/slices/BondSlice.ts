@@ -121,7 +121,7 @@ export const calcBondDetails = createAsyncThunk(
         const errorString = "Amount is too small!";
         dispatch(error(errorString));
       } else {
-        bondQuote = bondQuote / Math.pow(10, 9);
+        bondQuote = bondQuote / Math.pow(10, 18);
       }
     } else {
       // RFV = DAI
