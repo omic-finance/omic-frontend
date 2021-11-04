@@ -52,9 +52,9 @@ export function ClaimBondTableData({ userBond }) {
         {bond.pendingPayout ? trim(bond.pendingPayout, 4) : <Skeleton width={100} />}
       </TableCell>
       <TableCell align="center">{bond.interestDue ? trim(bond.interestDue, 4) : <Skeleton width={100} />}</TableCell>
-      {/*<TableCell align="right" style={{ whiteSpace: "nowrap" }}>*/}
-      {/*  {isAppLoading ? <Skeleton /> : vestingPeriod()}*/}
-      {/*</TableCell>*/}
+      <TableCell align="right" style={{ whiteSpace: "nowrap" }}>
+        {isAppLoading ? <Skeleton /> : vestingPeriod()}
+      </TableCell>
       <TableCell align="right">
         <Button
           variant="outlined"
@@ -115,10 +115,10 @@ export function ClaimBondCardData({ userBond }) {
         <Typography>{bond.interestDue ? trim(bond.interestDue, 4) : <Skeleton width={100} />}</Typography>
       </div>
 
-      {/*<div className="data-row" style={{ marginBottom: "20px" }}>*/}
-      {/*  <Typography>Fully Vested</Typography>*/}
-      {/*  <Typography>{vestingPeriod()}</Typography>*/}
-      {/*</div>*/}
+      <div className="data-row" style={{ marginBottom: "20px" }}>
+        <Typography>Fully Vested</Typography>
+        <Typography>{vestingPeriod()}</Typography>
+      </div>
       <Box display="flex" justifyContent="space-around" alignItems="center" className="claim-bond-card-buttons">
         <Button
           variant="outlined"

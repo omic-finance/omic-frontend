@@ -50,7 +50,7 @@ function NavContent() {
 
             {address && (
               <div className="wallet-link">
-                <Link href={`https://etherscan.io/address/${address}`} target="_blank">
+                <Link href={`https://arbiscan.io/address/${address}`} target="_blank">
                   {shorten(address)}
                 </Link>
               </div>
