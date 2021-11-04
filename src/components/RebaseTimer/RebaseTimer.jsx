@@ -21,7 +21,8 @@ function RebaseTimer() {
   });
 
   function initializeTimer() {
-    const rebaseBlock = getRebaseBlock(currentBlock);
+    // arb doesn't have currentBlock as int
+    const rebaseBlock = getRebaseBlock(parseInt(currentBlock));
     const seconds = secondsUntilBlock(currentBlock, rebaseBlock);
     setSecondsToRebase(seconds);
     const prettified = prettifySeconds(seconds);

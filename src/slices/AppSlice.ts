@@ -1,6 +1,7 @@
 import { ethers } from "ethers";
 import { addresses } from "../constants";
 import { abi as OHM } from "src/abi/IERC20.json";
+import { abi as ARBMultiScan } from "src/abi/ArbMultiScan.json";
 import { abi as CirculatingSupply } from "src/abi/CirculatingSupplyContract.json";
 import { abi as OlympusStakingv2 } from "../abi/OlympusStakingv2.json";
 import { abi as sOHMv2 } from "../abi/sOhmv2.json";
@@ -32,9 +33,16 @@ export const loadAppDetails = createAsyncThunk(
     }
 
     const treasuryMarketValue = 0;
-    const currentBlock = await provider.getBlockNumber();
-    console.log('Current block');
-    console.log(currentBlock);
+    let currentBlock;
+    // console.log('Getting block');
+    // get the multiscan contract for arb
+    if (networkID == 42161) {
+      const arbContract = new ethers.Contract("0x842eC2c7D803033Edf55E478F461FC547Bc54EB2", ARBMultiScan, provider);
+      currentBlock = await arbContract.getL1BlockNumber();
+      currentBlock = parseInt(currentBlock);
+    } else {
+      currentBlock = await provider.getBlockNumber();
+    }
 
     const ohmContract = new ethers.Contract(addresses[networkID].OHM_ADDRESS as string, OHM, provider);
     const circulatingSupplyContract = new ethers.Contract(
