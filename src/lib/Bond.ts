@@ -41,6 +41,7 @@ interface BondOpts {
   bondToken: string; // Unused, but native token to buy the bond.
   decimals: number; // Number of decimal places.
   fraction_pow: number; // To what power the value fractions should be raised
+  purchased_pow: number; // To what power the purchased value fractions should be raised
 }
 
 // Technically only exporting for the interface
@@ -56,6 +57,7 @@ export abstract class Bond {
   readonly bondToken: string;
   readonly decimals: number;
   readonly fraction_pow: number;
+  readonly purchased_pow: number;
 
   // The following two fields will differ on how they are set depending on bond type
   abstract isLP: Boolean;
@@ -76,6 +78,7 @@ export abstract class Bond {
     this.bondToken = bondOpts.bondToken;
     this.decimals = bondOpts.decimals;
     this.fraction_pow = bondOpts.fraction_pow;
+    this.purchased_pow = bondOpts.purchased_pow;
   }
 
   getAddressForBond(networkID: NetworkID) {

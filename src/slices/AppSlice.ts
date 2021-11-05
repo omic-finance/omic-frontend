@@ -152,7 +152,7 @@ const loadMarketPrice = createAsyncThunk("app/loadMarketPrice", async ({ network
   let marketPrice: number;
   try {
     marketPrice = await getMarketPrice({ networkID, provider });
-    marketPrice = marketPrice * Math.pow(10, 3); // Was power 9 for DAI
+    marketPrice = marketPrice / Math.pow(10, 9); // Was power 9 for DAI
   } catch (e) {
     marketPrice = await getTokenPrice("olympus");
   }

@@ -121,7 +121,9 @@ export const calcBondDetails = createAsyncThunk(
         const errorString = "Amount is too small!";
         dispatch(error(errorString));
       } else {
-        bondQuote = bondQuote / Math.pow(10, 18);
+        console.log('Bond quote');
+        console.log(bondQuote);
+        bondQuote = bondQuote / Math.pow(10, bond.fraction_pow);
       }
     } else {
       // RFV = DAI
@@ -146,7 +148,7 @@ export const calcBondDetails = createAsyncThunk(
     }
 
     // Calculate bonds purchased
-    let purchased = (await bond.getTreasuryBalance(networkID, provider)) * Math.pow(10, 12);
+    let purchased = (await bond.getTreasuryBalance(networkID, provider)) * Math.pow(10, bond.purchased_pow);
     return {
       bond: bond.name,
       bondDiscount,

@@ -3,6 +3,7 @@ import { addresses } from "src/constants";
 
 import { ReactComponent as DaiImg } from "src/assets/tokens/USDC.svg";
 import { ReactComponent as OhmDaiImg } from "src/assets/tokens/OMIC-USDC.svg";
+import { ReactComponent as OhmMimImg } from "src/assets/tokens/OMIC-MIM.svg";
 import { ReactComponent as FraxImg } from "src/assets/tokens/FRAX.svg";
 import { ReactComponent as OhmFraxImg } from "src/assets/tokens/OHM-FRAX.svg";
 import { ReactComponent as OhmLusdImg } from "src/assets/tokens/OHM-LUSD.svg";
@@ -36,6 +37,7 @@ export const dai = new StableBond({
   bondToken: "USDC",
   decimals: 6,
   fraction_pow: 12,
+  purchased_pow: 12,
   isAvailable: { [NetworkID.Mainnet]: true, [NetworkID.Testnet]: true },
   bondIconSvg: DaiImg,
   bondContractABI: DaiBondContract,
@@ -52,34 +54,35 @@ export const dai = new StableBond({
 });
 
 export const ohm_dai = new LPBond({
-  name: "omic_usdc_lp",
-  displayName: "OMIC-USDC LP",
-  bondToken: "USDC",
-  decimals: 9,
-  fraction_pow: 18,
+  name: "omic_mim_lp",
+  displayName: "OMIC-MIM LP",
+  bondToken: "MIM",
+  decimals: 18,
+  fraction_pow: 12,
+  purchased_pow: 0,
   isAvailable: { [NetworkID.Mainnet]: true, [NetworkID.Testnet]: true },
-  bondIconSvg: OhmDaiImg,
+  bondIconSvg: OhmMimImg,
   bondContractABI: BondOhmDaiContract,
   reserveContract: ReserveOhmDaiContract,
   networkAddrs: {
     [NetworkID.Mainnet]: {
-      bondAddress: "0x073c1BF7b6cf1706b967899Df2c5055F03307CF7",
-      reserveAddress: "0xe4ad045abb586dbdae6b11a4d2c6ff5434b93ed1",
+      bondAddress: "0x32a715C09e1E3F6b810A16aDacCa0656DdffE97a",
+      reserveAddress: "0xcf4f4f341b60587513b8fc01482237996c7e3fd3",
     },
     [NetworkID.Testnet]: {
-      bondAddress: "0x073c1BF7b6cf1706b967899Df2c5055F03307CF7",
-      reserveAddress: "0xe4ad045abb586dbdae6b11a4d2c6ff5434b93ed1",
+      bondAddress: "0x32a715C09e1E3F6b810A16aDacCa0656DdffE97a",
+      reserveAddress: "0xcf4f4f341b60587513b8fc01482237996c7e3fd3",
     },
   },
   lpUrl:
-    "https://app.sushi.com/add/0x86b3353387F560295a8Fa7902679735E5f076Bd5/0xFF970A61A04b1cA14834A43f5dE4533eBDDB5CC8",
+    "https://app.sushi.com/add/0x86b3353387F560295a8Fa7902679735E5f076Bd5/0xFEa7a6a0B346362BF88A9e4A88416B77a57D6c2A",
 });
 
 // HOW TO ADD A NEW BOND:
 // Is it a stableCoin bond? use `new StableBond`
 // Is it an LP Bond? use `new LPBond`
 // Add new bonds to this array!!
-export const allBonds = [dai];
+export const allBonds = [dai, ohm_dai];
 export const allBondsMap = allBonds.reduce((prevVal, bond) => {
   return { ...prevVal, [bond.name]: bond };
 }, {});

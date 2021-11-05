@@ -203,7 +203,7 @@ function BondPurchase({ bond, slippage, recipientAddress }) {
                 <Skeleton width="100px" />
               ) : (
                 <>
-                  {trim(bond.balance * Math.pow(10, bond.fraction_pow), 2)} {displayUnits}
+                  {trim(bond.balance, 18)} {displayUnits}
                 </>
               )}
             </Typography>
@@ -212,7 +212,7 @@ function BondPurchase({ bond, slippage, recipientAddress }) {
           <div className={`data-row`}>
             <Typography>You Will Get</Typography>
             <Typography id="bond-value-id" className="price-data">
-              {isBondLoading ? <Skeleton width="100px" /> : `${trim(bond.bondQuote, 4) || "0"} OMIC`}
+              {isBondLoading ? <Skeleton width="100px" /> : `${trim(bond.bondQuote, 9) || "0"} OMIC`}
             </Typography>
           </div>
 

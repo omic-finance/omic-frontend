@@ -123,7 +123,7 @@ function TreasuryDashboard() {
                   wsOMIC Price
                   <InfoTooltip
                     message={
-                      "wsOMIC = sOMIC * index\n\nThe price of wsOMIC is equal to the price of OHM multiplied by the current index"
+                      "wsOMIC = sOMIC * index\n\nThe price of wsOMIC is equal to the price of OMIC multiplied by the current index"
                     }
                   />
                 </Typography>
