@@ -11,8 +11,12 @@ export default function Social() {
         <SvgIcon color="primary" component={Twitter} />
       </Link>
 
-      <Link href="http://discord.gg/XbgZVrcgTv" target="_blank">
+      <Link href="https://discord.gg/EAdCtsRTxs" target="_blank">
         <SvgIcon color="primary" component={Discord} />
+      </Link>
+
+      <Link href="https://omicdao.medium.com/" target="_blank">
+        <SvgIcon color="primary" component={Medium} />
       </Link>
     </div>
   );
