@@ -1,4 +1,4 @@
-import { ethers } from "ethers";
+import { BigNumber, ethers } from "ethers";
 import { addresses } from "../constants";
 import { abi as ierc20Abi } from "../abi/IERC20.json";
 import { abi as sOHM } from "../abi/sOHM.json";
@@ -136,8 +136,14 @@ export const calculateUserBondDetails = createAsyncThunk(
     allowance = await reserveContract.allowance(address, bond.getAddressForBond(networkID));
     balance = await reserveContract.balanceOf(address);
     // formatEthers takes BigNumber => String
-    const balanceVal = ethers.utils.formatEther(balance);
     // balanceVal should NOT be converted to a number. it loses decimal precision
+    let balanceVal;
+    if (bond.displayName == "USDC") {
+      // USDC has 6 decimal points
+      balanceVal = ethers.utils.formatUnits(balance, 6);
+    } else {
+      balanceVal = ethers.utils.formatEther(balance);
+    }
     return {
       bond: bond.name,
       displayName: bond.displayName,
