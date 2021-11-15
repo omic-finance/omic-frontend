@@ -38,10 +38,14 @@ export const dai = new StableBond({
   decimals: 6,
   fraction_pow: 12,
   purchased_pow: 12,
-  isAvailable: { [NetworkID.Mainnet]: true, [NetworkID.Testnet]: true },
+  isAvailable: { [NetworkID.Ethereum]: true, [NetworkID.Mainnet]: true, [NetworkID.Testnet]: true },
   bondIconSvg: DaiImg,
   bondContractABI: DaiBondContract,
   networkAddrs: {
+    [NetworkID.Ethereum]: {
+      bondAddress: "0x6185f3d36b3d0ed280094b3732542a1662dbfe97",
+      reserveAddress: "0xFF970A61A04b1cA14834A43f5dE4533eBDDB5CC8",
+    },
     [NetworkID.Mainnet]: {
       bondAddress: "0x6185f3d36b3d0ed280094b3732542a1662dbfe97",
       reserveAddress: "0xFF970A61A04b1cA14834A43f5dE4533eBDDB5CC8",
@@ -60,11 +64,15 @@ export const ohm_dai = new LPBond({
   decimals: 18,
   fraction_pow: 12,
   purchased_pow: 0,
-  isAvailable: { [NetworkID.Mainnet]: true, [NetworkID.Testnet]: true },
+  isAvailable: { [NetworkID.Ethereum]: true, [NetworkID.Mainnet]: true, [NetworkID.Testnet]: true },
   bondIconSvg: OhmMimImg,
   bondContractABI: BondOhmDaiContract,
   reserveContract: ReserveOhmDaiContract,
   networkAddrs: {
+    [NetworkID.Ethereum]: {
+      bondAddress: "0x32a715C09e1E3F6b810A16aDacCa0656DdffE97a",
+      reserveAddress: "0xcf4f4f341b60587513b8fc01482237996c7e3fd3",
+    },
     [NetworkID.Mainnet]: {
       bondAddress: "0x32a715C09e1E3F6b810A16aDacCa0656DdffE97a",
       reserveAddress: "0xcf4f4f341b60587513b8fc01482237996c7e3fd3",

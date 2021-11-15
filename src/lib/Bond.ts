@@ -7,6 +7,7 @@ import { addresses } from "src/constants";
 import React, { ReactNode } from "react";
 
 export enum NetworkID {
+  Ethereum = 1,
   Mainnet = 42161,
   Testnet = 3,
 }
@@ -22,11 +23,13 @@ export interface BondAddresses {
 }
 
 export interface NetworkAddresses {
+  [NetworkID.Ethereum]: BondAddresses;
   [NetworkID.Mainnet]: BondAddresses;
   [NetworkID.Testnet]: BondAddresses;
 }
 
 export interface Available {
+  [NetworkID.Ethereum]?: boolean;
   [NetworkID.Mainnet]?: boolean;
   [NetworkID.Testnet]?: boolean;
 }
