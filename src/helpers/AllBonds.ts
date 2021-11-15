@@ -38,7 +38,7 @@ export const dai = new StableBond({
   decimals: 6,
   fraction_pow: 12,
   purchased_pow: 12,
-  isAvailable: { [NetworkID.Ethereum]: true, [NetworkID.Mainnet]: true, [NetworkID.Testnet]: true },
+  isAvailable: { [NetworkID.Ethereum]: false, [NetworkID.Mainnet]: false, [NetworkID.Testnet]: false },
   bondIconSvg: DaiImg,
   bondContractABI: DaiBondContract,
   networkAddrs: {
