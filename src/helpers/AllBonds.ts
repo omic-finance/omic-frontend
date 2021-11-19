@@ -2,6 +2,7 @@ import { StableBond, LPBond, NetworkID, CustomBond, BondType } from "src/lib/Bon
 import { addresses } from "src/constants";
 
 import { ReactComponent as DaiImg } from "src/assets/tokens/USDC.svg";
+import { ReactComponent as MimImg } from "src/assets/tokens/MIM.svg";
 import { ReactComponent as OhmDaiImg } from "src/assets/tokens/OMIC-USDC.svg";
 import { ReactComponent as OhmMimImg } from "src/assets/tokens/OMIC-MIM.svg";
 import { ReactComponent as FraxImg } from "src/assets/tokens/FRAX.svg";
@@ -57,6 +58,34 @@ export const dai = new StableBond({
   },
 });
 
+// TODO(zx): Further modularize by splitting up reserveAssets into vendor token definitions
+//   and include that in the definition of a bond
+export const mim = new StableBond({
+  name: "mim",
+  displayName: "MIM",
+  bondToken: "MIM",
+  decimals: 18,
+  fraction_pow: 0,
+  purchased_pow: 0,
+  isAvailable: { [NetworkID.Ethereum]: false, [NetworkID.Mainnet]: true, [NetworkID.Testnet]: false },
+  bondIconSvg: MimImg,
+  bondContractABI: DaiBondContract,
+  networkAddrs: {
+    [NetworkID.Ethereum]: {
+      bondAddress: "0x6F95C4b67430153d42836e63D3d73FE3F4fa8F33",
+      reserveAddress: "0xfea7a6a0b346362bf88a9e4a88416b77a57d6c2a",
+    },
+    [NetworkID.Mainnet]: {
+      bondAddress: "0x6F95C4b67430153d42836e63D3d73FE3F4fa8F33",
+      reserveAddress: "0xfea7a6a0b346362bf88a9e4a88416b77a57d6c2a",
+    },
+    [NetworkID.Testnet]: {
+      bondAddress: "0x6F95C4b67430153d42836e63D3d73FE3F4fa8F33",
+      reserveAddress: "0xfea7a6a0b346362bf88a9e4a88416b77a57d6c2a",
+    },
+  },
+});
+
 export const ohm_dai = new LPBond({
   name: "omic_mim_lp",
   displayName: "OMIC-MIM LP",
@@ -90,7 +119,7 @@ export const ohm_dai = new LPBond({
 // Is it a stableCoin bond? use `new StableBond`
 // Is it an LP Bond? use `new LPBond`
 // Add new bonds to this array!!
-export const allBonds = [dai, ohm_dai];
+export const allBonds = [dai, mim, ohm_dai];
 export const allBondsMap = allBonds.reduce((prevVal, bond) => {
   return { ...prevVal, [bond.name]: bond };
 }, {});
