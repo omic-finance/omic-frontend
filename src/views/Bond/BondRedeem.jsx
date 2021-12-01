@@ -33,6 +33,7 @@ function BondRedeem({ bond }) {
   }
 
   const vestingTime = () => {
+    console.log(`blocks ${bond.bondMaturationBlock-currentBlock} ${currentBlock} ${bond.bondMaturationBlock}`)
     return prettyVestingPeriod(currentBlock, bond.bondMaturationBlock);
   };
 

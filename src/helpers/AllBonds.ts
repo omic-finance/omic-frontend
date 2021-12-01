@@ -21,6 +21,7 @@ import { abi as BondOhmEthContract } from "src/abi/bonds/OhmEthContract.json";
 import { abi as DaiBondContract } from "src/abi/bonds/DaiContract.json";
 import { abi as ReserveOhmLusdContract } from "src/abi/reserves/OhmLusd.json";
 import { abi as ReserveOhmDaiContract } from "src/abi/reserves/OhmDai.json";
+import { abi as Z2OStyleBondContract } from "src/abi/bonds/Z2OStyleBond.json";
 import { abi as ReserveOhmFraxContract } from "src/abi/reserves/OhmFrax.json";
 import { abi as ReserveOhmEthContract } from "src/abi/reserves/OhmEth.json";
 
@@ -68,7 +69,7 @@ export const mim = new StableBond({
   purchased_pow: 0,
   isAvailable: { [NetworkID.Ethereum]: true, [NetworkID.Mainnet]: true, [NetworkID.Testnet]: true },
   bondIconSvg: MimImg,
-  bondContractABI: DaiBondContract,
+  bondContractABI: Z2OStyleBondContract,
   networkAddrs: {
     [NetworkID.Ethereum]: {
       bondAddress: "0xf4455aa7447bc4ac127e3593eaaefe109ede6f1a",
@@ -92,10 +93,10 @@ export const omic_mim = new LPBond({
   bondToken: "MIM",
   decimals: 18,
   fraction_pow: 12,
-  purchased_pow: 0,
+  purchased_pow: 12,
   isAvailable: { [NetworkID.Ethereum]: true, [NetworkID.Mainnet]: true, [NetworkID.Testnet]: true },
   bondIconSvg: OhmMimImg,
-  bondContractABI: BondOhmDaiContract,
+  bondContractABI: Z2OStyleBondContract,
   reserveContract: ReserveOhmDaiContract,
   networkAddrs: {
     [NetworkID.Ethereum]: {
