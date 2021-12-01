@@ -99,15 +99,15 @@ export const omic_mim = new LPBond({
   reserveContract: ReserveOhmDaiContract,
   networkAddrs: {
     [NetworkID.Ethereum]: {
-      bondAddress: "0x99cb07e3a57718b8a132b0de3f4980de52c4c93e",
+      bondAddress: "0x490b7e951692A1e81017d9Cef82876d2894d7c49",
       reserveAddress: "0xcf4f4f341b60587513b8fc01482237996c7e3fd3",
     },
     [NetworkID.Mainnet]: {
-      bondAddress: "0x99cb07e3a57718b8a132b0de3f4980de52c4c93e",
+      bondAddress: "0x490b7e951692A1e81017d9Cef82876d2894d7c49",
       reserveAddress: "0xcf4f4f341b60587513b8fc01482237996c7e3fd3",
     },
     [NetworkID.Testnet]: {
-      bondAddress: "0x99cb07e3a57718b8a132b0de3f4980de52c4c93e",
+      bondAddress: "0x490b7e951692A1e81017d9Cef82876d2894d7c49",
       reserveAddress: "0xcf4f4f341b60587513b8fc01482237996c7e3fd3",
     },
   },
