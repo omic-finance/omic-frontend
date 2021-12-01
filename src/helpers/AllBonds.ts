@@ -4,6 +4,8 @@ import { addresses } from "src/constants";
 import { ReactComponent as DaiImg } from "src/assets/tokens/USDC.svg";
 import { ReactComponent as OhmDaiImg } from "src/assets/tokens/OMIC-USDC.svg";
 import { ReactComponent as OhmMimImg } from "src/assets/tokens/OMIC-MIM.svg";
+import { ReactComponent as MimImg } from "src/assets/tokens/MIM.svg";
+
 import { ReactComponent as FraxImg } from "src/assets/tokens/FRAX.svg";
 import { ReactComponent as OhmFraxImg } from "src/assets/tokens/OHM-FRAX.svg";
 import { ReactComponent as OhmLusdImg } from "src/assets/tokens/OHM-LUSD.svg";
@@ -57,14 +59,70 @@ export const dai = new StableBond({
   },
 });
 
-export const ohm_dai = new LPBond({
-  name: "omic_mim_lp",
+export const mim = new StableBond({
+  name: "mim",
+  displayName: "MIM",
+  bondToken: "MIM",
+  decimals: 18,
+  fraction_pow: 12,
+  purchased_pow: 0,
+  isAvailable: { [NetworkID.Ethereum]: true, [NetworkID.Mainnet]: true, [NetworkID.Testnet]: true },
+  bondIconSvg: MimImg,
+  bondContractABI: DaiBondContract,
+  networkAddrs: {
+    [NetworkID.Ethereum]: {
+      bondAddress: "0xf4455aa7447bc4ac127e3593eaaefe109ede6f1a",
+      reserveAddress: "0xfea7a6a0b346362bf88a9e4a88416b77a57d6c2a",
+    },
+    [NetworkID.Mainnet]: {
+      bondAddress: "0xf4455aa7447bc4ac127e3593eaaefe109ede6f1a",
+      reserveAddress: "0xfea7a6a0b346362bf88a9e4a88416b77a57d6c2a",
+    },
+    [NetworkID.Testnet]: {
+      bondAddress: "0xf4455aa7447bc4ac127e3593eaaefe109ede6f1a",
+      reserveAddress: "0xfea7a6a0b346362bf88a9e4a88416b77a57d6c2a",
+    },
+  },
+});
+0x99cb07e3a57718b8a132b0de3f4980de52c4c93e
+
+export const omic_mim = new LPBond({
+  name: "omic_mim_lp2",
   displayName: "OMIC-MIM LP",
   bondToken: "MIM",
   decimals: 18,
   fraction_pow: 12,
   purchased_pow: 0,
   isAvailable: { [NetworkID.Ethereum]: true, [NetworkID.Mainnet]: true, [NetworkID.Testnet]: true },
+  bondIconSvg: OhmMimImg,
+  bondContractABI: BondOhmDaiContract,
+  reserveContract: ReserveOhmDaiContract,
+  networkAddrs: {
+    [NetworkID.Ethereum]: {
+      bondAddress: "0x99cb07e3a57718b8a132b0de3f4980de52c4c93e",
+      reserveAddress: "0xcf4f4f341b60587513b8fc01482237996c7e3fd3",
+    },
+    [NetworkID.Mainnet]: {
+      bondAddress: "0x99cb07e3a57718b8a132b0de3f4980de52c4c93e",
+      reserveAddress: "0xcf4f4f341b60587513b8fc01482237996c7e3fd3",
+    },
+    [NetworkID.Testnet]: {
+      bondAddress: "0x99cb07e3a57718b8a132b0de3f4980de52c4c93e",
+      reserveAddress: "0xcf4f4f341b60587513b8fc01482237996c7e3fd3",
+    },
+  },
+  lpUrl:
+    "https://app.sushi.com/add/0x86b3353387F560295a8Fa7902679735E5f076Bd5/0xFEa7a6a0B346362BF88A9e4A88416B77a57D6c2A",
+});
+
+export const ohm_dai = new LPBond({
+  name: "omic_mim_lp",
+  displayName: "OMIC-MIM LP (REDEEM ONLY)",
+  bondToken: "MIM",
+  decimals: 18,
+  fraction_pow: 12,
+  purchased_pow: 0,
+  isAvailable: { [NetworkID.Ethereum]: false, [NetworkID.Mainnet]: false, [NetworkID.Testnet]: false },
   bondIconSvg: OhmMimImg,
   bondContractABI: BondOhmDaiContract,
   reserveContract: ReserveOhmDaiContract,
@@ -90,7 +148,7 @@ export const ohm_dai = new LPBond({
 // Is it a stableCoin bond? use `new StableBond`
 // Is it an LP Bond? use `new LPBond`
 // Add new bonds to this array!!
-export const allBonds = [dai, ohm_dai];
+export const allBonds = [mim, omic_mim, dai, ohm_dai];
 export const allBondsMap = allBonds.reduce((prevVal, bond) => {
   return { ...prevVal, [bond.name]: bond };
 }, {});

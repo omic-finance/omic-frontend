@@ -38,7 +38,7 @@ interface BondOpts {
   name: string; // Internal name used for references
   displayName: string; // Display name on UI
   isAvailable: Available; // set false to hide
-  bondIconSvg: React.ReactNode; //  SVG path for icons
+  bondIconSvg: any; //  SVG path for icons
   bondContractABI: ethers.ContractInterface; // ABI for contract
   networkAddrs: NetworkAddresses; // Mapping of network --> Addresses
   bondToken: string; // Unused, but native token to buy the bond.
@@ -54,7 +54,7 @@ export abstract class Bond {
   readonly displayName: string;
   readonly type: BondType;
   readonly isAvailable: Available;
-  readonly bondIconSvg: React.ReactNode;
+  readonly bondIconSvg: any;
   readonly bondContractABI: ethers.ContractInterface; // Bond ABI
   readonly networkAddrs: NetworkAddresses;
   readonly bondToken: string;
