@@ -38,7 +38,8 @@ function BondRedeem({ bond }) {
   };
 
   const vestingPeriod = () => {
-    const vestingBlock = parseInt(currentBlock) + parseInt(bondingState.vestingTerm);
+    const vestingTerm = parseInt(bondingState.vestingTerm) === 432000 ? 33110 : parseInt(bondingState.vestingTerm);
+    const vestingBlock = parseInt(currentBlock) + vestingTerm;
     const seconds = secondsUntilBlock(currentBlock, vestingBlock);
     return prettifySeconds(seconds, "day");
   };
