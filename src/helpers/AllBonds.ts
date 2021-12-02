@@ -93,7 +93,7 @@ export const omic_mim = new LPBond({
   bondToken: "MIM",
   decimals: 18,
   fraction_pow: 12,
-  purchased_pow: 12,
+  purchased_pow: 0,
   isAvailable: { [NetworkID.Ethereum]: true, [NetworkID.Mainnet]: true, [NetworkID.Testnet]: true },
   bondIconSvg: OhmMimImg,
   bondContractABI: Z2OStyleBondContract,
