@@ -39,7 +39,7 @@ function BondPurchase({ bond, slippage, recipientAddress }) {
 
   const vestingPeriod = () => {
     const vestingTerm = parseInt(bond.vestingTerm) === 432000 ? 33110 : parseInt(bond.vestingTerm);
-    const vestingBlock = parseInt(currentBlock) + parseInt(bond.vestingTerm);
+    const vestingBlock = parseInt(currentBlock) + parseInt(vestingTerm);
     const seconds = secondsUntilBlock(currentBlock, vestingBlock);
     return prettifySeconds(seconds, "day");
   };
